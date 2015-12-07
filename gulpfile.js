@@ -1,21 +1,6 @@
 var gulp = require("gulp");
 var shell = require('gulp-shell');
 var elixir = require('laravel-elixir');
-var themeInfo = require('./theme.json');
-
-var Task = elixir.Task;
-
-elixir.extend("stylistPublish", function() {
-
-    new Task("stylistPublish", function() {
-        gulp.src('').pipe(shell('php ../../artisan stylist:publish ' + themeInfo.name));
-    })
-
-        .watch('assets/**')
-        .watch('assets/**');
-});
-
-
 
 // ///////////////////////////////////////////
 // Gulp semantic Build task
@@ -52,10 +37,5 @@ elixir(function (mix) {
      * Copy images
      */
     mix.copy('resources/images', 'assets/images');
-
-    /**
-     * Publish Styles to public directory
-     */
-    mix.stylistPublish();
 
 });
