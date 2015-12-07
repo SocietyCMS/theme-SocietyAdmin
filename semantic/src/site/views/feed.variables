@@ -1,0 +1,20 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+/*-------------------
+      Elements
+--------------------*/
+
+@eventMargin: 0em;
+@eventDivider: none;
+@eventPadding: 0em;
+
+/* Event Label */
+@labelWidth: 3em;
+@labelHeight: auto;
+
+@labeledContentMargin: 0.75em 0em 2em 0.75em;
+
+/*-------------------
+      Variations
+--------------------*/

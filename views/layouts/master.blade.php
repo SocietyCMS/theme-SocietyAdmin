@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>
+        @yield('title')
+        | Admin
+    </title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    {!! Theme::style('semantic/dist/semantic.min.css') !!}
+    {!! Theme::style('css/app.css') !!}
+
+    @yield('styles')
+
+</head>
+<body id="societyAdmin">
+
+<div class="pusher">
+
+    <div class="full height">
+        @include('partials.sidebar')
+
+        <div id="content">
+            <div class="ui masthead vertical segment">
+               @include('partials.topnav')
+            </div>
+
+            <div class="main ui intro container">
+
+                @include('flash::message')
+
+                @yield('content')
+
+            </div>
+        </div>
+    </div>
+
+    @include('partials.footer')
+
+</div>
+
+@yield('htmlComponents')
+
+{!! Theme::script('js/vendor.js') !!}
+{!! Theme::script('semantic/dist/semantic.min.js') !!}
+{!! Theme::script('js/app.js') !!}
+
+@include('javascript.api')
+
+<script>
+
+    // Disable Enter on Form
+    /*
+    $(document).on("keypress", "form", function(event) {
+        return event.keyCode != 13;
+    });
+    */
+
+</script>
+
+@yield('javascript')
+
+@yield('javascript--second')
+
+
+</body>
+</html>

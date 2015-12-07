@@ -1,0 +1,40 @@
+.pusher > .full.height {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.full.height > .toc {
+  position: relative;
+  z-index: 1;
+  width: 250px;
+  flex: 0 0 auto;
+  background-color: @black;
+
+  .ui.menu {
+    border-radius: 0;
+    border-width: 0 1px 0 0;
+    box-shadow: none;
+    margin: 0;
+    width: inherit;
+    overflow: hidden;
+    will-change: transform;
+  }
+}
+
+#content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+
+.main.container {
+  padding: 2em 0em 7em;
+}
+
+.masthead > .container,
+.main.container {
+  margin-left: 3em !important;
+  margin-right: 3em !important;
+  width: auto !important;
+}
