@@ -63,9 +63,8 @@
 </script>
 
 @yield('javascript')
-
 @yield('javascript--second')
-
+@yield('javascript--third')
 
 </body>
 </html>
