@@ -275,6 +275,10 @@
 .medium-editor-placeholder:after {
   color: #b3b3b1; }
 
+/* right floated label */
+.ui.right.floated.label {
+  float: right;
+}
 #societyAdmin .pusher > .full.height {
   display: -webkit-flex;
   display: -ms-flexbox;
