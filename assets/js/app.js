@@ -4,8 +4,9 @@
 require('./elements/jQueryFunctions');
 
 require('./elements/societyAdmin');
+require('./elements/semanticFileTypeClassMap');
 
-},{"./elements/jQueryFunctions":2,"./elements/societyAdmin":3}],2:[function(require,module,exports){
+},{"./elements/jQueryFunctions":2,"./elements/semanticFileTypeClassMap":3,"./elements/societyAdmin":4}],2:[function(require,module,exports){
 'use strict';
 
 jQuery.fn.extend({
@@ -25,6 +26,29 @@ jQuery.fn.extend({
 });
 
 },{}],3:[function(require,module,exports){
+(function (global){
+"use strict";
+
+global.semanticFileTypeClassMap = {
+
+    "text/plain": "file text outline",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "file word outline",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "file excel outline",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation": "file powerpoint outline",
+
+    "application/zip": "file archive outline",
+    "application/pdf": "file pdf outline",
+
+    "audio/mpeg": "file audio outline",
+    "audio/mpeg3": "file audio outline",
+    "audio/mp4": "file audio outline",
+
+    "image/png": "file image outline",
+    "image/jpeg": "file image outline"
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],4:[function(require,module,exports){
 'use strict';
 
 $('.toc .ui.sticky').sticky({

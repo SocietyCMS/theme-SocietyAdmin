@@ -16,6 +16,8 @@
 
     @yield('styles')
 
+    {!! Theme::script('js/vendor.js') !!}
+    {!! Theme::script('semantic/dist/semantic.min.js') !!}
 </head>
 <body id="societyAdmin">
 
@@ -45,26 +47,11 @@
 
 @yield('htmlComponents')
 
-{!! Theme::script('js/vendor.js') !!}
-{!! Theme::script('semantic/dist/semantic.min.js') !!}
-{!! Theme::script('js/app.js') !!}
 
+{!! Theme::script('js/app.js') !!}
 @include('javascript.api')
 
-<script>
-
-    // Disable Enter on Form
-    /*
-    $(document).on("keypress", "form", function(event) {
-        return event.keyCode != 13;
-    });
-    */
-
-</script>
-
 @yield('javascript')
-@yield('javascript--second')
-@yield('javascript--third')
 
 </body>
 </html>
