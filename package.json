@@ -9,6 +9,7 @@
     "laravel-elixir": "^4.0.0"
   },
   "dependencies": {
+    "browserify-shim": "^3.8.11",
     "fine-uploader": "^5.4.1",
     "medium-editor": "^5.10.0",
     "semantic-ui": "^2.1.6",
@@ -17,9 +18,14 @@
     "vue-resource": "^0.1.17"
   },
   "browser": {
-    "fineUploader": "./node_modules/fine-uploader/jquery.fine-uploader/jquery.fine-uploader.js"
+    "fineUploader": "./node_modules/fine-uploader/fine-uploader/fine-uploader.js"
   },
   "browserify-shim": {
-    "fineUploader": "qq"
+    "./node_modules/fine-uploader/fine-uploader/fine-uploader.js": "qq"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }
