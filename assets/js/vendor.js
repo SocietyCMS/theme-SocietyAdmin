@@ -1,5 +1,164 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
+/**
+ * filesize
+ *
+ * @author Jason Mulligan <jason.mulligan@avoidwork.com>
+ * @copyright 2015 Jason Mulligan <jason.mulligan@avoidwork.com>
+ * @license BSD-3-Clause
+ * @link http://filesizejs.com
+ * @module filesize
+ * @version 3.1.4
+ */
+"use strict";
+
+(function (global) {
+	var bit = /b$/;
+	var si = {
+		bits: ["B", "kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb"],
+		bytes: ["B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+	};
+
+	/**
+  * filesize
+  *
+  * @method filesize
+  * @param  {Mixed}   arg        String, Int or Float to transform
+  * @param  {Object}  descriptor [Optional] Flags
+  * @return {String}             Readable file size String
+  */
+	var filesize = function (arg) {
+		var descriptor = arguments[1] === undefined ? {} : arguments[1];
+
+		var result = [];
+		var skip = false;
+		var val = 0;
+		var e = undefined,
+		    base = undefined,
+		    bits = undefined,
+		    ceil = undefined,
+		    neg = undefined,
+		    num = undefined,
+		    output = undefined,
+		    round = undefined,
+		    unix = undefined,
+		    spacer = undefined,
+		    suffixes = undefined;
+
+		if (isNaN(arg)) {
+			throw new Error("Invalid arguments");
+		}
+
+		bits = descriptor.bits === true;
+		unix = descriptor.unix === true;
+		base = descriptor.base !== undefined ? descriptor.base : 2;
+		round = descriptor.round !== undefined ? descriptor.round : unix ? 1 : 2;
+		spacer = descriptor.spacer !== undefined ? descriptor.spacer : unix ? "" : " ";
+		suffixes = descriptor.suffixes !== undefined ? descriptor.suffixes : {};
+		output = descriptor.output !== undefined ? descriptor.output : "string";
+		e = descriptor.exponent !== undefined ? descriptor.exponent : -1;
+		num = Number(arg);
+		neg = num < 0;
+		ceil = base > 2 ? 1000 : 1024;
+
+		// Flipping a negative number to determine the size
+		if (neg) {
+			num = -num;
+		}
+
+		// Zero is now a special case because bytes divide by 1
+		if (num === 0) {
+			result[0] = 0;
+
+			if (unix) {
+				result[1] = "";
+			} else {
+				result[1] = "B";
+			}
+		} else {
+			// Determining the exponent
+			if (e === -1 || isNaN(e)) {
+				e = Math.floor(Math.log(num) / Math.log(ceil));
+			}
+
+			// Exceeding supported length, time to reduce & multiply
+			if (e > 8) {
+				val = val * (1000 * (e - 8));
+				e = 8;
+			}
+
+			if (base === 2) {
+				val = num / Math.pow(2, e * 10);
+			} else {
+				val = num / Math.pow(1000, e);
+			}
+
+			if (bits) {
+				val = val * 8;
+
+				if (val > ceil) {
+					val = val / ceil;
+					e++;
+				}
+			}
+
+			result[0] = Number(val.toFixed(e > 0 ? round : 0));
+			result[1] = si[bits ? "bits" : "bytes"][e];
+
+			if (!skip && unix) {
+				if (bits && bit.test(result[1])) {
+					result[1] = result[1].toLowerCase();
+				}
+
+				result[1] = result[1].charAt(0);
+
+				if (result[1] === "B") {
+					result[0] = Math.floor(result[0]);
+					result[1] = "";
+				} else if (!bits && result[1] === "k") {
+					result[1] = "K";
+				}
+			}
+		}
+
+		// Decorating a 'diff'
+		if (neg) {
+			result[0] = -result[0];
+		}
+
+		// Applying custom suffix
+		result[1] = suffixes[result[1]] || result[1];
+
+		// Returning Array, Object, or String (default)
+		if (output === "array") {
+			return result;
+		}
+
+		if (output === "exponent") {
+			return e;
+		}
+
+		if (output === "object") {
+			return { value: result[0], suffix: result[1] };
+		}
+
+		return result.join(spacer);
+	};
+
+	// CommonJS, AMD, script tag
+	if (typeof exports !== "undefined") {
+		module.exports = filesize;
+	} else if (typeof define === "function" && define.amd) {
+		define(function () {
+			return filesize;
+		});
+	} else {
+		global.filesize = filesize;
+	}
+})(typeof global !== "undefined" ? global : window);
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],2:[function(require,module,exports){
+(function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*!
 * Fine Uploader
@@ -11213,7 +11372,7 @@ qq.FilenameEditHandler = function(s, inheritedInternalApi) {
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -20425,7 +20584,7 @@ return jQuery;
 
 }));
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /*global self, document, DOMException */
 
 /*! @source http://purl.eligrey.com/github/classList.js/blob/master/classList.js */
@@ -27161,7 +27320,7 @@ MediumEditor.version = MediumEditor.parseVersionString.call(this, ({
     return MediumEditor;
 }()));
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -27254,7 +27413,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**!
  * Sortable
  * @author	RubaXa   <trash@rubaxa.org>
@@ -28505,7 +28664,7 @@ process.umask = function() { return 0; };
 	return Sortable;
 });
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * Service for sending network requests.
  */
@@ -28667,7 +28826,7 @@ module.exports = function (_) {
     return _.http = Http;
 };
 
-},{"./lib/jsonp":8,"./lib/promise":9,"./lib/xhr":11}],7:[function(require,module,exports){
+},{"./lib/jsonp":9,"./lib/promise":10,"./lib/xhr":12}],8:[function(require,module,exports){
 /**
  * Install plugin.
  */
@@ -28708,7 +28867,7 @@ if (window.Vue) {
 }
 
 module.exports = install;
-},{"./http":6,"./lib/util":10,"./resource":12,"./url":13}],8:[function(require,module,exports){
+},{"./http":7,"./lib/util":11,"./resource":13,"./url":14}],9:[function(require,module,exports){
 /**
  * JSONP request.
  */
@@ -28760,7 +28919,7 @@ module.exports = function (_, options) {
 
 };
 
-},{"./promise":9}],9:[function(require,module,exports){
+},{"./promise":10}],10:[function(require,module,exports){
 /**
  * Promises/A+ polyfill v1.1.0 (https://github.com/bramstein/promis)
  */
@@ -28972,7 +29131,7 @@ if (window.MutationObserver) {
 
 module.exports = window.Promise || Promise;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * Utility functions.
  */
@@ -29054,7 +29213,7 @@ module.exports = function (Vue) {
     return _;
 };
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * XMLHttp request.
  */
@@ -29107,7 +29266,7 @@ module.exports = function (_, options) {
     return promise;
 };
 
-},{"./promise":9}],12:[function(require,module,exports){
+},{"./promise":10}],13:[function(require,module,exports){
 /**
  * Service for interacting with RESTful services.
  */
@@ -29220,7 +29379,7 @@ module.exports = function (_) {
     return _.resource = Resource;
 };
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /**
  * Service for URL templating.
  */
@@ -29379,7 +29538,7 @@ module.exports = function (_) {
     return _.url = Url;
 };
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (process){
 /*!
  * Vue.js v1.0.10
@@ -38684,7 +38843,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = Vue;
 }).call(this,require('_process'))
-},{"_process":4}],15:[function(require,module,exports){
+},{"_process":5}],16:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -38714,7 +38873,9 @@ global.Sortable = require('sortablejs');
 // //////////////////////////////////////////////////////////////////////////
 global.MediumEditor = require('medium-editor');
 
+global.filesize = require('filesize');
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"fineUploader":1,"jquery":2,"medium-editor":3,"sortablejs":5,"vue":14,"vue-resource":7}]},{},[15]);
+},{"filesize":1,"fineUploader":2,"jquery":3,"medium-editor":4,"sortablejs":6,"vue":15,"vue-resource":8}]},{},[16]);
 
 //# sourceMappingURL=vendor.js.map

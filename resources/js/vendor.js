@@ -25,3 +25,6 @@ global.Sortable = require('sortablejs');
 // MediumEditor
 // //////////////////////////////////////////////////////////////////////////
 global.MediumEditor = require('medium-editor');
+
+
+global.filesize = require('filesize');
