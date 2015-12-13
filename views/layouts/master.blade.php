@@ -33,7 +33,7 @@
 
             <div class="main ui intro container">
 
-                @include('flash::message')
+                @include('partials.message')
 
                 @yield('content')
 
