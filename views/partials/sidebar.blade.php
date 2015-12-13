@@ -13,13 +13,13 @@
                 <div class="ten wide column">
                     <span><b>{{$currentUser->present()->fullname}}</b></span>
 
-                    @if(Setting::getBool('user::enable-profile') && $currentUser->hasAccess('user.profile.edit'))
-                        <p><a href="{{route('backend::user.profile.show')}}" class="right floated star">
-                            <i class="pencil icon"></i>
-                            Edit
-                        </a></p>
-                    @endif
-
+                    <div class="menu">
+                        @if(Setting::getBool('user::enable-profile') && $currentUser->hasAccess('user.profile.edit'))
+                            <a href="{{route('backend::user.profile.show')}}" class="item">
+                                @lang('core::elements.action.edit resource', ['name' => trans('user::profile.title.profile')])
+                            </a>
+                        @endif
+                    </div>
                 </div>
 
             </div>
