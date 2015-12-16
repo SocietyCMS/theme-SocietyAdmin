@@ -13,6 +13,7 @@
     "filesize": "^3.1.4",
     "fine-uploader": "^5.4.1",
     "medium-editor": "^5.10.0",
+    "medium-editor-tables": "^0.5.0",
     "semantic-ui": "^2.1.6",
     "sortablejs": "^1.4.2",
     "vue": "^1.0.10",

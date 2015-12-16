@@ -6,7 +6,9 @@ require('./elements/jQueryFunctions');
 require('./elements/societyAdmin');
 require('./elements/semanticFileTypeClassMap');
 
-},{"./elements/jQueryFunctions":2,"./elements/semanticFileTypeClassMap":3,"./elements/societyAdmin":4}],2:[function(require,module,exports){
+require('./elements/medium-editor');
+
+},{"./elements/jQueryFunctions":2,"./elements/medium-editor":3,"./elements/semanticFileTypeClassMap":4,"./elements/societyAdmin":5}],2:[function(require,module,exports){
 'use strict';
 
 jQuery.fn.extend({
@@ -26,6 +28,21 @@ jQuery.fn.extend({
 });
 
 },{}],3:[function(require,module,exports){
+'use strict';
+
+var editor = new MediumEditor('.editable', {
+    placeholder: {
+        text: ''
+    },
+    extensions: {
+        table: new MediumEditorTable()
+    },
+    toolbar: {
+        buttons: ['h2', 'h3', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'table']
+    }
+});
+
+},{}],4:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -48,7 +65,7 @@ global.semanticFileTypeClassMap = {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 $('.toc .ui.sticky').sticky({
