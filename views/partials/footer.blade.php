@@ -20,7 +20,7 @@
             <div class="three wide right floated column">
                 <h4 class="ui inverted header">@lang('core::footer.network.title')</h4>
                 <div class="ui inverted link list">
-                    <a class="item" href="https://github.com/SocietyCMS/SocietyCMS" target="_blank">@lang('core::footer.network.github repo')</a>
+                    <a class="item" href="https://github.com/SocietyCMS" target="_blank">@lang('core::footer.network.github repo')</a>
                     <a class="item" href="http://societycms.com/docs/0.x">@lang('core::footer.network.documentation')</a>
                 </div>
             </div>
