@@ -412,5 +412,15 @@
   box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
   -webkit-appearance: none;
 }
+#societyAdmin .setting.segment .field {
+  margin-top: 3em;
+}
+#societyAdmin .setting.segment .field .label {
+  margin-top: 0.5em;
+  width: 100%;
+}
+#societyAdmin .setting.segment .field:first-child {
+  margin-top: 0;
+}
 
 /*# sourceMappingURL=app.css.map */
