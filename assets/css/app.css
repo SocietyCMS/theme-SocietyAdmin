@@ -1481,5 +1481,8 @@ be a descendant of the grid when it is being dragged.
 #societyAdmin .setting.segment .field:first-child {
   margin-top: 0;
 }
+#societyAdmin .setting.segment .grouped.fields .field {
+  margin-top: 0;
+}
 
 /*# sourceMappingURL=app.css.map */
