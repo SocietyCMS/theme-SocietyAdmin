@@ -1484,5 +1484,21 @@ be a descendant of the grid when it is being dragged.
 #societyAdmin .setting.segment .grouped.fields .field {
   margin-top: 0;
 }
+#societyAdmin .flex {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#societyAdmin .flex.align-center-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
 
 /*# sourceMappingURL=app.css.map */
