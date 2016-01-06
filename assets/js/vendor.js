@@ -22871,7 +22871,133 @@ fcViews.agendaWeek = {
 
 return FC; // export for Node/CommonJS
 });
-},{"jquery":5,"moment":8}],4:[function(require,module,exports){
+},{"jquery":6,"moment":9}],4:[function(require,module,exports){
+/*
+	A simple, lightweight jQuery plugin for creating sortable tables.
+	https://github.com/kylefox/jquery-tablesort
+	Version 0.0.7
+*/
+
+(function($) {
+	$.tablesort = function ($table, settings) {
+		var self = this;
+		this.$table = $table;
+		this.$thead = this.$table.find('thead');
+		this.settings = $.extend({}, $.tablesort.defaults, settings);
+		this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th:not(.no-sort)') : this.$table.find('th:not(.no-sort)');
+		this.$sortCells.bind('click.tablesort', function() {
+			self.sort($(this));
+		});
+		this.index = null;
+		this.$th = null;
+		this.direction = null;
+	};
+
+	$.tablesort.prototype = {
+
+		sort: function(th, direction) {
+			var start = new Date(),
+				self = this,
+				table = this.$table,
+				//body = table.find('tbody').length > 0 ? table.find('tbody') : table,
+				rows = this.$thead.length > 0 ? table.find('tbody tr') : table.find('tr').has('td'),
+				cells = table.find('tr td:nth-of-type(' + (th.index() + 1) + ')'),
+				sortBy = th.data().sortBy,
+				sortedMap = [];
+
+			var unsortedValues = cells.map(function(idx, cell) {
+				if (sortBy)
+					return (typeof sortBy === 'function') ? sortBy($(th), $(cell), self) : sortBy;
+				return ($(this).data().sortValue != null ? $(this).data().sortValue : $(this).text());
+			});
+			if (unsortedValues.length === 0) return;
+
+			if (direction !== 'asc' && direction !== 'desc')
+				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
+			else
+				this.direction = direction;
+
+			direction = this.direction == 'asc' ? 1 : -1;
+
+			self.$table.trigger('tablesort:start', [self]);
+			self.log("Sorting by " + this.index + ' ' + this.direction);
+
+			// Try to force a browser redraw
+			self.$table.css("display");
+			// Run sorting asynchronously on a timeout to force browser redraw after
+			// `tablesort:start` callback. Also avoids locking up the browser too much.
+			setTimeout(function() {
+				self.$sortCells.removeClass(self.settings.asc + ' ' + self.settings.desc);
+				for (var i = 0, length = unsortedValues.length; i < length; i++)
+				{
+					sortedMap.push({
+						index: i,
+						cell: cells[i],
+						row: rows[i],
+						value: unsortedValues[i]
+					});
+				}
+
+				sortedMap.sort(function(a, b) {
+					if (a.value > b.value) {
+						return 1 * direction;
+					} else if (a.value < b.value) {
+						return -1 * direction;
+					} else {
+						return 0;
+					}
+				});
+
+				$.each(sortedMap, function(i, entry) {
+					table.append(entry.row);
+				});
+
+				th.addClass(self.settings[self.direction]);
+
+				self.log('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
+				self.$table.trigger('tablesort:complete', [self]);
+				//Try to force a browser redraw
+				self.$table.css("display");
+			}, unsortedValues.length > 2000 ? 200 : 10);
+		},
+
+		log: function(msg) {
+			if(($.tablesort.DEBUG || this.settings.debug) && console && console.log) {
+				console.log('[tablesort] ' + msg);
+			}
+		},
+
+		destroy: function() {
+			this.$sortCells.unbind('click.tablesort');
+			this.$table.data('tablesort', null);
+			return null;
+		}
+
+	};
+
+	$.tablesort.DEBUG = false;
+
+	$.tablesort.defaults = {
+		debug: $.tablesort.DEBUG,
+		asc: 'sorted ascending',
+		desc: 'sorted descending'
+	};
+
+	$.fn.tablesort = function(settings) {
+		var table, sortable, previous;
+		return this.each(function() {
+			table = $(this);
+			previous = table.data('tablesort');
+			if(previous) {
+				previous.destroy();
+			}
+			table.data('tablesort', new $.tablesort(table, settings));
+		});
+	};
+
+})(window.Zepto || window.jQuery);
+
+},{}],5:[function(require,module,exports){
 var jQuery = require('jquery');
 
 /*! jQuery UI - v1.10.3 - 2013-05-03
@@ -37878,7 +38004,7 @@ $.widget( "ui.tooltip", {
 
 }( jQuery ) );
 
-},{"jquery":5}],5:[function(require,module,exports){
+},{"jquery":6}],6:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -47090,7 +47216,7 @@ return jQuery;
 
 }));
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (root, factory) {
   'use strict';
   if (typeof module === 'object') {
@@ -47653,7 +47779,7 @@ var MediumEditorTable = MediumEditor.extensions.form.extend({
   return MediumEditorTable;
 }()));
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*global self, document, DOMException */
 
 /*! @source http://purl.eligrey.com/github/classList.js/blob/master/classList.js */
@@ -54542,7 +54668,7 @@ MediumEditor.version = MediumEditor.parseVersionString.call(this, ({
     return MediumEditor;
 }()));
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -57738,7 +57864,7 @@ MediumEditor.version = MediumEditor.parseVersionString.call(this, ({
     return _moment;
 
 }));
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -57831,7 +57957,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**!
  * Sortable
  * @author	RubaXa   <trash@rubaxa.org>
@@ -59082,7 +59208,7 @@ process.umask = function() { return 0; };
 	return Sortable;
 });
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * Service for sending network requests.
  */
@@ -59244,7 +59370,7 @@ module.exports = function (_) {
     return _.http = Http;
 };
 
-},{"./lib/jsonp":13,"./lib/promise":14,"./lib/xhr":16}],12:[function(require,module,exports){
+},{"./lib/jsonp":14,"./lib/promise":15,"./lib/xhr":17}],13:[function(require,module,exports){
 /**
  * Install plugin.
  */
@@ -59285,7 +59411,7 @@ if (window.Vue) {
 }
 
 module.exports = install;
-},{"./http":11,"./lib/util":15,"./resource":17,"./url":18}],13:[function(require,module,exports){
+},{"./http":12,"./lib/util":16,"./resource":18,"./url":19}],14:[function(require,module,exports){
 /**
  * JSONP request.
  */
@@ -59337,7 +59463,7 @@ module.exports = function (_, options) {
 
 };
 
-},{"./promise":14}],14:[function(require,module,exports){
+},{"./promise":15}],15:[function(require,module,exports){
 /**
  * Promises/A+ polyfill v1.1.0 (https://github.com/bramstein/promis)
  */
@@ -59549,7 +59675,7 @@ if (window.MutationObserver) {
 
 module.exports = window.Promise || Promise;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /**
  * Utility functions.
  */
@@ -59631,7 +59757,7 @@ module.exports = function (Vue) {
     return _;
 };
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /**
  * XMLHttp request.
  */
@@ -59684,7 +59810,7 @@ module.exports = function (_, options) {
     return promise;
 };
 
-},{"./promise":14}],17:[function(require,module,exports){
+},{"./promise":15}],18:[function(require,module,exports){
 /**
  * Service for interacting with RESTful services.
  */
@@ -59797,7 +59923,7 @@ module.exports = function (_) {
     return _.resource = Resource;
 };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
  * Service for URL templating.
  */
@@ -59956,7 +60082,7 @@ module.exports = function (_) {
     return _.url = Url;
 };
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 (function (process){
 /*!
  * Vue.js v1.0.12
@@ -69390,7 +69516,7 @@ if (process.env.NODE_ENV !== 'production' && inBrowser) {
 
 module.exports = Vue;
 }).call(this,require('_process'))
-},{"_process":9}],20:[function(require,module,exports){
+},{"_process":10}],21:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -69399,6 +69525,7 @@ module.exports = Vue;
 // //////////////////////////////////////////////////////////////////////////
 global.$ = global.jQuery = require('jquery');
 require('jquery-ui');
+require('jquery-tablesort');
 
 // //////////////////////////////////////////////////////////////////////////
 // Vue.js
@@ -69433,6 +69560,6 @@ global.fullcalendar = require('fullcalendar');
 global.filesize = require('filesize');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"filesize":1,"fineUploader":2,"fullcalendar":3,"jquery":5,"jquery-ui":4,"medium-editor":7,"medium-editor-tables":6,"sortablejs":10,"vue":19,"vue-resource":12}]},{},[20]);
+},{"filesize":1,"fineUploader":2,"fullcalendar":3,"jquery":6,"jquery-tablesort":4,"jquery-ui":5,"medium-editor":8,"medium-editor-tables":7,"sortablejs":11,"vue":20,"vue-resource":13}]},{},[21]);
 
 //# sourceMappingURL=vendor.js.map
