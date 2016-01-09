@@ -60085,7 +60085,7 @@ module.exports = function (_) {
 },{}],20:[function(require,module,exports){
 (function (process){
 /*!
- * Vue.js v1.0.12
+ * Vue.js v1.0.11
  * (c) 2015 Evan You
  * Released under the MIT License.
  */
@@ -61335,7 +61335,7 @@ function off(el, event, cb) {
 
 function setClass(el, cls) {
   /* istanbul ignore if */
-  if (isIE9 && !(el instanceof SVGElement)) {
+  if (isIE9 && el.hasOwnProperty('className')) {
     el.className = cls;
   } else {
     el.setAttribute('class', cls);
@@ -61536,7 +61536,6 @@ function removeNodeRange(start, end, vm, frag, cb) {
 }
 
 var commonTagRE = /^(div|p|span|img|a|b|i|br|ul|ol|li|h1|h2|h3|h4|h5|h6|code|pre|table|th|td|tr|form|label|input|select|option|nav|article|section|header|footer)$/;
-var reservedTagRE = /^(slot|partial|component)$/;
 
 /**
  * Check if an element is a component, if yes return its
@@ -61550,7 +61549,7 @@ var reservedTagRE = /^(slot|partial|component)$/;
 function checkComponentAttr(el, options) {
   var tag = el.tagName.toLowerCase();
   var hasAttrs = el.hasAttributes();
-  if (!commonTagRE.test(tag) && !reservedTagRE.test(tag)) {
+  if (!commonTagRE.test(tag) && tag !== 'component') {
     if (resolveAsset(options, 'components', tag)) {
       return { id: tag };
     } else {
@@ -61601,7 +61600,6 @@ function getIsBinding(el) {
 
 function initProp(vm, prop, value) {
   var key = prop.path;
-  value = coerceProp(prop, value);
   vm[key] = vm._data[key] = assertProp(prop, value) ? value : undefined;
 }
 
@@ -61657,23 +61655,6 @@ function assertProp(prop, value) {
     }
   }
   return true;
-}
-
-/**
- * Force parsing value with coerce option.
- *
- * @param {*} value
- * @param {Object} options
- * @return {*}
- */
-
-function coerceProp(prop, value) {
-  var coerce = prop.options.coerce;
-  if (!coerce) {
-    return value;
-  }
-  // coerce is a function
-  return coerce(value);
 }
 
 function formatType(val) {
@@ -61861,8 +61842,8 @@ function guardComponents(options) {
     var ids = Object.keys(components);
     for (var i = 0, l = ids.length; i < l; i++) {
       var key = ids[i];
-      if (commonTagRE.test(key) || reservedTagRE.test(key)) {
-        process.env.NODE_ENV !== 'production' && warn('Do not use built-in or reserved HTML elements as component ' + 'id: ' + key);
+      if (commonTagRE.test(key)) {
+        process.env.NODE_ENV !== 'production' && warn('Do not use built-in HTML elements as component ' + 'id: ' + key);
         continue;
       }
       def = components[key];
@@ -62382,7 +62363,6 @@ var util = Object.freeze({
 	replace: replace,
 	on: on$1,
 	off: off,
-	setClass: setClass,
 	addClass: addClass,
 	removeClass: removeClass,
 	extractContent: extractContent,
@@ -62398,9 +62378,7 @@ var util = Object.freeze({
 	checkComponentAttr: checkComponentAttr,
 	initProp: initProp,
 	assertProp: assertProp,
-	coerceProp: coerceProp,
 	commonTagRE: commonTagRE,
-	reservedTagRE: reservedTagRE,
 	get warn () { return warn; }
 });
 
@@ -63328,11 +63306,11 @@ Watcher.prototype.run = function () {
   if (this.active) {
     var value = this.get();
     if (value !== this.value ||
-    // Deep watchers and watchers on Object/Arrays should fire even
+    // Deep watchers and Array watchers should fire even
     // when the value is the same, because the value may
     // have mutated; but only do so if this is a
     // non-shallow update (caused by a vm digest).
-    (isObject(value) || this.deep) && !this.shallow) {
+    (isArray(value) || this.deep) && !this.shallow) {
       // set new value
       var oldValue = this.value;
       this.value = value;
@@ -63578,12 +63556,13 @@ function prefix(prop) {
 var xlinkNS = 'http://www.w3.org/1999/xlink';
 var xlinkRE = /^xlink:/;
 
-// check for attributes that prohibit interpolations
-var disallowedInterpAttrRE = /^v-|^:|^@|^(is|transition|transition-mode|debounce|track-by|stagger|enter-stagger|leave-stagger)$/;
-
-// these attributes should also set their corresponding properties
-// because they only affect the initial state of the element
-var attrWithPropsRE = /^(value|checked|selected|muted)$/;
+// these input element attributes should also set their
+// corresponding properties
+var inputProps = {
+  value: 1,
+  checked: 1,
+  selected: 1
+};
 
 // these attributes should set a hidden property for
 // binding v-model to object values
@@ -63592,6 +63571,9 @@ var modelProps = {
   'true-value': '_trueValue',
   'false-value': '_falseValue'
 };
+
+// check for attributes that prohibit interpolations
+var disallowedInterpAttrRE = /^v-|^:|^@|^(is|transition|transition-mode|debounce|track-by|stagger|enter-stagger|leave-stagger)$/;
 
 var bind = {
 
@@ -63645,9 +63627,9 @@ var bind = {
   handleObject: style.handleObject,
 
   handleSingle: function handleSingle(attr, value) {
-    if (!this.descriptor.interp && attrWithPropsRE.test(attr) && attr in this.el) {
-      this.el[attr] = attr === 'value' ? value == null // IE9 will set input.value to "null" for null...
-      ? '' : value : value;
+    if (inputProps[attr] && attr in this.el) {
+      this.el[attr] = attr === 'value' ? value || '' : // IE9 will set input.value to "null" for null...
+      value;
     }
     // set model props
     var modelProp = modelProps[attr];
@@ -64028,18 +64010,13 @@ var text$2 = {
       });
       this.on('blur', function () {
         self.focused = false;
-        // do not sync value after fragment removal (#2017)
-        if (!self._frag || self._frag.inserted) {
-          self.rawListener();
-        }
+        self.listener();
       });
     }
 
     // Now attach the main listener
-    this.listener = this.rawListener = function () {
-      if (composing || !self._bound) {
-        return;
-      }
+    this.listener = function () {
+      if (composing) return;
       var val = number || isRange ? toNumber(el.value) : el.value;
       self.set(val);
       // force update on next tick to avoid lock & same value
@@ -64203,14 +64180,9 @@ var show = {
   },
 
   apply: function apply(el, value) {
-    if (inDoc(el)) {
-      applyTransition(el, value ? 1 : -1, toggle, this.vm);
-    } else {
-      toggle();
-    }
-    function toggle() {
+    applyTransition(el, value ? 1 : -1, function () {
       el.style.display = value ? '' : 'none';
-    }
+    }, this.vm);
   }
 };
 
@@ -64245,7 +64217,7 @@ function isRealTemplate(node) {
 }
 
 var tagRE$1 = /<([\w:]+)/;
-var entityRE = /&#?\w+?;/;
+var entityRE = /&\w+;|&#\d+;|&#x[\dA-F]+;/;
 
 /**
  * Convert a string template to a DocumentFragment.
@@ -65780,7 +65752,6 @@ var propDef = {
     var twoWay = prop.mode === bindingModes.TWO_WAY;
 
     var parentWatcher = this.parentWatcher = new Watcher(parent, parentKey, function (val) {
-      val = coerceProp(prop, val);
       if (assertProp(prop, val)) {
         child[childKey] = val;
       }
@@ -67763,7 +67734,7 @@ Directive.prototype._bind = function () {
     } else {
       // for class interpolations, only remove the parts that
       // need to be interpolated.
-      setClass(this.el, removeTags(this.el.getAttribute('class')).trim().replace(/\s+/g, ' '));
+      this.el.className = removeTags(this.el.className).trim().replace(/\s+/g, ' ');
     }
   }
 
@@ -67782,7 +67753,6 @@ Directive.prototype._bind = function () {
   if (this.bind) {
     this.bind();
   }
-  this._bound = true;
 
   if (this.literal) {
     this.update && this.update(descriptor.raw);
@@ -67818,6 +67788,7 @@ Directive.prototype._bind = function () {
       this.update(watcher.value);
     }
   }
+  this._bound = true;
 };
 
 /**
@@ -68037,11 +68008,6 @@ function lifecycleMixin (Vue) {
     var original = el;
     el = transclude(el, options);
     this._initElement(el);
-
-    // handle v-pre on root node (#2026)
-    if (el.nodeType === 1 && getAttr(el, 'v-pre') !== null) {
-      return;
-    }
 
     // root is always compiled per-instance, because
     // container attrs and props can be different every time.
@@ -68470,8 +68436,8 @@ function globalAPI (Vue) {
       } else {
         /* istanbul ignore if */
         if (process.env.NODE_ENV !== 'production') {
-          if (type === 'component' && (commonTagRE.test(id) || reservedTagRE.test(id))) {
-            warn('Do not use built-in or reserved HTML elements as component ' + 'id: ' + id);
+          if (type === 'component' && commonTagRE.test(id)) {
+            warn('Do not use built-in HTML elements as component ' + 'id: ' + id);
           }
         }
         if (type === 'component' && isPlainObject(definition)) {
@@ -69483,7 +69449,7 @@ var elementDirectives = {
   partial: partial
 };
 
-Vue.version = '1.0.12';
+Vue.version = '1.0.11';
 
 /**
  * Vue and every constructor that extends Vue has an
@@ -69553,6 +69519,7 @@ global.MediumEditorTable = require('medium-editor-tables');
 // FullCalendar
 // //////////////////////////////////////////////////////////////////////////
 global.fullcalendar = require('fullcalendar');
+global.moment = require('moment');
 
 // //////////////////////////////////////////////////////////////////////////
 // Filesize
@@ -69560,6 +69527,6 @@ global.fullcalendar = require('fullcalendar');
 global.filesize = require('filesize');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"filesize":1,"fineUploader":2,"fullcalendar":3,"jquery":6,"jquery-tablesort":4,"jquery-ui":5,"medium-editor":8,"medium-editor-tables":7,"sortablejs":11,"vue":20,"vue-resource":13}]},{},[21]);
+},{"filesize":1,"fineUploader":2,"fullcalendar":3,"jquery":6,"jquery-tablesort":4,"jquery-ui":5,"medium-editor":8,"medium-editor-tables":7,"moment":9,"sortablejs":11,"vue":20,"vue-resource":13}]},{},[21]);
 
 //# sourceMappingURL=vendor.js.map
