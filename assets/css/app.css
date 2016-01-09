@@ -1471,6 +1471,45 @@ be a descendant of the grid when it is being dragged.
   box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
   -webkit-appearance: none;
 }
+#societyAdmin .ui.text.red {
+  color: #DB2828;
+}
+#societyAdmin .ui.text.orange {
+  color: #F2711C;
+}
+#societyAdmin .ui.text.yellow {
+  color: #FBBD08;
+}
+#societyAdmin .ui.text.olive {
+  color: #B5CC18;
+}
+#societyAdmin .ui.text.green {
+  color: #21BA45;
+}
+#societyAdmin .ui.text.teal {
+  color: #00B5AD;
+}
+#societyAdmin .ui.text.blue {
+  color: #2185D0;
+}
+#societyAdmin .ui.text.violet {
+  color: #6435C9;
+}
+#societyAdmin .ui.text.purple {
+  color: #A333C8;
+}
+#societyAdmin .ui.text.pink {
+  color: #E03997;
+}
+#societyAdmin .ui.text.brown {
+  color: #A5673F;
+}
+#societyAdmin .ui.text.gray {
+  color: #767676;
+}
+#societyAdmin .ui.text.black {
+  color: #1B1C1D;
+}
 #societyAdmin .setting.segment .field {
   margin-top: 3em;
 }
