@@ -1,6 +1,14 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+// /////////////////////////////////////////////////
+// Components
+// /////////////////////////////////////////////////
+require('./components/semantic-ui');
+
+// /////////////////////////////////////////////////
+// Elements - 3rd Party components
+// /////////////////////////////////////////////////
 require('./elements/jQueryFunctions');
 
 require('./elements/societyAdmin');
@@ -8,7 +16,18 @@ require('./elements/semanticFileTypeClassMap');
 
 require('./elements/medium-editor');
 
-},{"./elements/jQueryFunctions":2,"./elements/medium-editor":3,"./elements/semanticFileTypeClassMap":4,"./elements/societyAdmin":5}],2:[function(require,module,exports){
+require('./elements/toastr');
+
+},{"./components/semantic-ui":2,"./elements/jQueryFunctions":3,"./elements/medium-editor":4,"./elements/semanticFileTypeClassMap":5,"./elements/societyAdmin":6,"./elements/toastr":7}],2:[function(require,module,exports){
+'use strict';
+
+$('.message .close').on('click', function () {
+    $(this).closest('.message').transition('fade');
+});
+
+$('.ui.dropdown').dropdown();
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 jQuery.fn.extend({
@@ -27,7 +46,7 @@ jQuery.fn.extend({
     }
 });
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var editor = new MediumEditor('.editable', {
@@ -42,7 +61,7 @@ var editor = new MediumEditor('.editable', {
     }
 });
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -117,13 +136,34 @@ global.semanticFileTypeClassMap = {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 $('.toc .ui.sticky').sticky({
     context: '#content',
     observeChanges: true
 });
+
+},{}],7:[function(require,module,exports){
+"use strict";
+
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "8000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
 
 },{}]},{},[1]);
 

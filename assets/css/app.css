@@ -1395,6 +1395,649 @@ be a descendant of the grid when it is being dragged.
 .ui.right.floated.label {
   float: right;
 }
+#societyAdmin {
+  /*Additional properties for button version
+ iOS requires the button element instead of an anchor tag.
+ If you want the anchor version, it requires `href="#"`.*/
+  /*Responsive Design*/
+  /*
+
+████████╗██╗  ██╗███████╗███╗   ███╗███████╗███████╗
+╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝██╔════╝
+   ██║   ███████║█████╗  ██╔████╔██║█████╗  ███████╗
+   ██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝  ╚════██║
+   ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗███████║
+   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝╚══════╝
+
+*/
+  /*******************************
+        Theme Selection
+*******************************/
+  /* To override a theme for an individual element
+   specify theme name below
+*/
+  /* Global */
+  /* Elements */
+  /* Collections */
+  /* Modules */
+  /* Views */
+  /*******************************
+            Folders
+*******************************/
+  /* Path to theme packages */
+  /* Path to site override folder */
+  /*******************************
+         Import Theme
+*******************************/
+  /*******************************
+        Import Directives
+*******************************/
+  /*------------------
+       Theme
+-------------------*/
+  /*--------------------
+   Site Variables
+---------------------*/
+  /* Default site.variables */
+  /*******************************
+         Site Settings
+*******************************/
+  /*-------------------
+       Fonts
+--------------------*/
+  /*-------------------
+      Base Sizes
+--------------------*/
+  /* This is the single variable that controls them all */
+  /* The size of page text  */
+  /*-------------------
+    Border Radius
+--------------------*/
+  /* See Power-user section below
+   for explanation of @px variables
+*/
+  /*-------------------
+    Brand Colors
+--------------------*/
+  /*--------------
+  Page Heading
+---------------*/
+  /*--------------
+   Form Input
+---------------*/
+  /* This adjusts the default form input across all elements */
+  /* Line Height Default For Inputs in Browser */
+  /*-------------------
+    Focused Input
+--------------------*/
+  /* Used on inputs, textarea etc */
+  /* Used on dropdowns, other larger blocks */
+  /*-------------------
+        Sizes
+--------------------*/
+  /*
+  Sizes are all expressed in terms of 14px/em (default em)
+  This ensures these "ratios" remain constant despite changes in EM
+*/
+  /*-------------------
+        Page
+--------------------*/
+  /*-------------------
+      Paragraph
+--------------------*/
+  /*-------------------
+       Links
+--------------------*/
+  /*-------------------
+  Highlighted Text
+--------------------*/
+  /*-------------------
+       Loader
+--------------------*/
+  /*-------------------
+        Grid
+--------------------*/
+  /*-------------------
+     Transitions
+--------------------*/
+  /*-------------------
+     Breakpoints
+--------------------*/
+  /*-------------------
+      Site Colors
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Light Colors  ---*/
+  /*---   Neutrals  ---*/
+  /*--- Colored Backgrounds ---*/
+  /*--- Colored Headers ---*/
+  /*--- Colored Text ---*/
+  /*-------------------
+     Alpha Colors
+--------------------*/
+  /*-------------------
+       Accents
+--------------------*/
+  /* Differentiating Neutrals */
+  /* Differentiating Layers */
+  /*******************************
+           Power-User
+*******************************/
+  /*-------------------
+    Emotive Colors
+--------------------*/
+  /* Positive */
+  /* Negative */
+  /* Info */
+  /* Warning */
+  /*-------------------
+        Paths
+--------------------*/
+  /* For source only. Modified in gulp for dist */
+  /*-------------------
+       Em Sizes
+--------------------*/
+  /*
+  This rounds @size values to the closest pixel then expresses that value in (r)em.
+  This ensures all size values round to exact pixels
+*/
+  /* em */
+  /* rem */
+  /*-------------------
+  Exact Pixel Values
+--------------------*/
+  /*
+  These are used to specify exact pixel values in em
+  for things like borders that remain constantly
+  sized as emSize adjusts
+
+  Since there are many more sizes than names for sizes,
+  these are named by their original pixel values.
+
+*/
+  /*-------------------
+       Icons
+--------------------*/
+  /* Maximum Glyph Width of Icon */
+  /*-------------------
+     Neutral Text
+--------------------*/
+  /*-------------------
+     Brand Colors
+--------------------*/
+  /*-------------------
+      Borders
+--------------------*/
+  /*-------------------
+    Derived Values
+--------------------*/
+  /* Loaders Position Offset */
+  /* Rendered Scrollbar Width */
+  /* Maximum Single Character Glyph Width, aka Capital "W" */
+  /* Used to match floats with text */
+  /* Header Spacing */
+  /* Minimum Mobile Width */
+  /* Positive / Negative Dupes */
+  /* Responsive */
+  /* Columns */
+  /*******************************
+             States
+*******************************/
+  /*-------------------
+      Disabled
+--------------------*/
+  /*-------------------
+        Hover
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+        Focus
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+    Down (:active)
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+        Active
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /* Packaged site.variables */
+  /*******************************
+         Site Settings
+*******************************/
+  /*-------------------
+       Fonts
+--------------------*/
+  /*-------------------
+      Base Sizes
+--------------------*/
+  /* This is the single variable that controls them all */
+  /* The size of page text  */
+  /*-------------------
+    Border Radius
+--------------------*/
+  /* See Power-user section below
+   for explanation of @px variables
+*/
+  /*-------------------
+    Brand Colors
+--------------------*/
+  /*--------------
+  Page Heading
+---------------*/
+  /*--------------
+   Form Input
+---------------*/
+  /* This adjusts the default form input across all elements */
+  /* Line Height Default For Inputs in Browser */
+  /*-------------------
+    Focused Input
+--------------------*/
+  /* Used on inputs, textarea etc */
+  /* Used on dropdowns, other larger blocks */
+  /*-------------------
+        Sizes
+--------------------*/
+  /*
+  Sizes are all expressed in terms of 14px/em (default em)
+  This ensures these "ratios" remain constant despite changes in EM
+*/
+  /*-------------------
+        Page
+--------------------*/
+  /*-------------------
+      Paragraph
+--------------------*/
+  /*-------------------
+       Links
+--------------------*/
+  /*-------------------
+  Highlighted Text
+--------------------*/
+  /*-------------------
+       Loader
+--------------------*/
+  /*-------------------
+        Grid
+--------------------*/
+  /*-------------------
+     Transitions
+--------------------*/
+  /*-------------------
+     Breakpoints
+--------------------*/
+  /*-------------------
+      Site Colors
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Light Colors  ---*/
+  /*---   Neutrals  ---*/
+  /*--- Colored Backgrounds ---*/
+  /*--- Colored Headers ---*/
+  /*--- Colored Text ---*/
+  /*-------------------
+     Alpha Colors
+--------------------*/
+  /*-------------------
+       Accents
+--------------------*/
+  /* Differentiating Neutrals */
+  /* Differentiating Layers */
+  /*******************************
+           Power-User
+*******************************/
+  /*-------------------
+    Emotive Colors
+--------------------*/
+  /* Positive */
+  /* Negative */
+  /* Info */
+  /* Warning */
+  /*-------------------
+        Paths
+--------------------*/
+  /* For source only. Modified in gulp for dist */
+  /*-------------------
+       Em Sizes
+--------------------*/
+  /*
+  This rounds @size values to the closest pixel then expresses that value in (r)em.
+  This ensures all size values round to exact pixels
+*/
+  /* em */
+  /* rem */
+  /*-------------------
+  Exact Pixel Values
+--------------------*/
+  /*
+  These are used to specify exact pixel values in em
+  for things like borders that remain constantly
+  sized as emSize adjusts
+
+  Since there are many more sizes than names for sizes,
+  these are named by their original pixel values.
+
+*/
+  /*-------------------
+       Icons
+--------------------*/
+  /* Maximum Glyph Width of Icon */
+  /*-------------------
+     Neutral Text
+--------------------*/
+  /*-------------------
+     Brand Colors
+--------------------*/
+  /*-------------------
+      Borders
+--------------------*/
+  /*-------------------
+    Derived Values
+--------------------*/
+  /* Loaders Position Offset */
+  /* Rendered Scrollbar Width */
+  /* Maximum Single Character Glyph Width, aka Capital "W" */
+  /* Used to match floats with text */
+  /* Header Spacing */
+  /* Minimum Mobile Width */
+  /* Positive / Negative Dupes */
+  /* Responsive */
+  /* Columns */
+  /*******************************
+             States
+*******************************/
+  /*-------------------
+      Disabled
+--------------------*/
+  /*-------------------
+        Hover
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+        Focus
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+    Down (:active)
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+        Active
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /* Component's site.variables */
+  /*******************************
+         Site Settings
+*******************************/
+  /*-------------------
+       Fonts
+--------------------*/
+  /*-------------------
+      Base Sizes
+--------------------*/
+  /* This is the single variable that controls them all */
+  /* The size of page text  */
+  /*-------------------
+    Border Radius
+--------------------*/
+  /* See Power-user section below
+   for explanation of @px variables
+*/
+  /*-------------------
+    Brand Colors
+--------------------*/
+  /*--------------
+  Page Heading
+---------------*/
+  /*--------------
+   Form Input
+---------------*/
+  /* This adjusts the default form input across all elements */
+  /* Line Height Default For Inputs in Browser */
+  /*-------------------
+    Focused Input
+--------------------*/
+  /* Used on inputs, textarea etc */
+  /* Used on dropdowns, other larger blocks */
+  /*-------------------
+        Sizes
+--------------------*/
+  /*
+  Sizes are all expressed in terms of 14px/em (default em)
+  This ensures these "ratios" remain constant despite changes in EM
+*/
+  /*-------------------
+        Page
+--------------------*/
+  /*-------------------
+      Paragraph
+--------------------*/
+  /*-------------------
+       Links
+--------------------*/
+  /*-------------------
+  Highlighted Text
+--------------------*/
+  /*-------------------
+       Loader
+--------------------*/
+  /*-------------------
+        Grid
+--------------------*/
+  /*-------------------
+     Transitions
+--------------------*/
+  /*-------------------
+     Breakpoints
+--------------------*/
+  /*-------------------
+      Site Colors
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Light Colors  ---*/
+  /*---   Neutrals  ---*/
+  /*--- Colored Backgrounds ---*/
+  /*--- Colored Headers ---*/
+  /*--- Colored Text ---*/
+  /*-------------------
+     Alpha Colors
+--------------------*/
+  /*-------------------
+       Accents
+--------------------*/
+  /* Differentiating Neutrals */
+  /* Differentiating Layers */
+  /*******************************
+           Power-User
+*******************************/
+  /*-------------------
+    Emotive Colors
+--------------------*/
+  /* Positive */
+  /* Negative */
+  /* Info */
+  /* Warning */
+  /*-------------------
+        Paths
+--------------------*/
+  /* For source only. Modified in gulp for dist */
+  /*-------------------
+       Em Sizes
+--------------------*/
+  /*
+  This rounds @size values to the closest pixel then expresses that value in (r)em.
+  This ensures all size values round to exact pixels
+*/
+  /* em */
+  /* rem */
+  /*-------------------
+  Exact Pixel Values
+--------------------*/
+  /*
+  These are used to specify exact pixel values in em
+  for things like borders that remain constantly
+  sized as emSize adjusts
+
+  Since there are many more sizes than names for sizes,
+  these are named by their original pixel values.
+
+*/
+  /*-------------------
+       Icons
+--------------------*/
+  /* Maximum Glyph Width of Icon */
+  /*-------------------
+     Neutral Text
+--------------------*/
+  /*-------------------
+     Brand Colors
+--------------------*/
+  /*-------------------
+      Borders
+--------------------*/
+  /*-------------------
+    Derived Values
+--------------------*/
+  /* Loaders Position Offset */
+  /* Rendered Scrollbar Width */
+  /* Maximum Single Character Glyph Width, aka Capital "W" */
+  /* Used to match floats with text */
+  /* Header Spacing */
+  /* Minimum Mobile Width */
+  /* Positive / Negative Dupes */
+  /* Responsive */
+  /* Columns */
+  /*******************************
+             States
+*******************************/
+  /*-------------------
+      Disabled
+--------------------*/
+  /*-------------------
+        Hover
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+        Focus
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+    Down (:active)
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /*-------------------
+        Active
+--------------------*/
+  /*---  Colors  ---*/
+  /*---  Emotive  ---*/
+  /*---  Brand   ---*/
+  /*---  Dark Tones  ---*/
+  /*---  Light Tones  ---*/
+  /* Site theme site.variables */
+  /*******************************
+     User Global Variables
+*******************************/
+  /*-------------------
+ Component Variables
+---------------------*/
+  /* Default */
+  /*******************************
+            Message
+*******************************/
+  /*-------------------
+       Elements
+--------------------*/
+  /* Header */
+  /* Paragraph */
+  /* List */
+  /* Icon */
+  /* Close Icon */
+  /*-------------------
+        Types
+--------------------*/
+  /* Icon Message */
+  /* Attached */
+  /* Floating */
+  /* Warning / Positive / Negative / Info */
+  /* Packaged Theme */
+  /*******************************
+            Message
+*******************************/
+  /*-------------------
+       Elements
+--------------------*/
+  /* Header */
+  /* Paragraph */
+  /* List */
+  /* Icon */
+  /* Close Icon */
+  /*-------------------
+        Types
+--------------------*/
+  /* Icon Message */
+  /* Attached */
+  /* Floating */
+  /* Warning / Positive / Negative / Info */
+  /* Site Theme */
+  /*******************************
+    User Variable Overrides
+*******************************/
+  /*******************************
+             Mix-ins
+*******************************/
+  /*------------------
+       Fonts
+-------------------*/
+  /*------------------
+     Overrides
+-------------------*/
+  /* End Config */
+}
 #societyAdmin .pusher > .full.height {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1470,6 +2113,269 @@ be a descendant of the grid when it is being dragged.
   background: #FFF;
   box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
   -webkit-appearance: none;
+}
+#societyAdmin .toast-title {
+  font-weight: bold;
+}
+#societyAdmin .toast-message {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+#societyAdmin .toast-message a,
+#societyAdmin .toast-message label {
+  color: #FFFFFF;
+}
+#societyAdmin .toast-message a:hover {
+  color: #CCCCCC;
+  text-decoration: none;
+}
+#societyAdmin .toast-close-button {
+  position: relative;
+  right: -0.3em;
+  top: -0.3em;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+  -webkit-text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.8;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter: alpha(opacity=80);
+}
+#societyAdmin .toast-close-button:hover,
+#societyAdmin .toast-close-button:focus {
+  color: #1B1C1D;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  filter: alpha(opacity=40);
+}
+#societyAdmin button.toast-close-button {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+#societyAdmin .toast-top-center {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+#societyAdmin .toast-bottom-center {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+#societyAdmin .toast-top-full-width {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+#societyAdmin .toast-bottom-full-width {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+#societyAdmin .toast-top-left {
+  top: 12px;
+  left: 12px;
+}
+#societyAdmin .toast-top-right {
+  top: 12px;
+  right: 12px;
+}
+#societyAdmin .toast-bottom-right {
+  right: 12px;
+  bottom: 12px;
+}
+#societyAdmin .toast-bottom-left {
+  bottom: 12px;
+  left: 12px;
+}
+#societyAdmin #toast-container {
+  position: fixed;
+  z-index: 999999;
+  pointer-events: none;
+  /*overrides*/
+}
+#societyAdmin #toast-container * {
+  box-sizing: border-box;
+}
+#societyAdmin #toast-container > div {
+  position: relative;
+  pointer-events: auto;
+  overflow: hidden;
+  margin: 0 0 6px;
+  padding: 15px 15px 15px 50px;
+  width: 300px;
+  border-radius: 3px 3px 3px 3px;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 12px #767676;
+  color: #FFFFFF;
+  opacity: 0.8;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter: alpha(opacity=80);
+}
+#societyAdmin #toast-container > :hover {
+  box-shadow: 0 0 12px #1B1C1D;
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: alpha(opacity=100);
+  cursor: pointer;
+}
+#societyAdmin #toast-container.toast-top-center > div,
+#societyAdmin #toast-container.toast-bottom-center > div {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#societyAdmin #toast-container.toast-top-full-width > div,
+#societyAdmin #toast-container.toast-bottom-full-width > div {
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#societyAdmin .toast {
+  background-color: #030303;
+}
+#societyAdmin .toast-success {
+  background-color: #21BA45;
+}
+#societyAdmin .toast-error {
+  background-color: #DB2828;
+}
+#societyAdmin .toast-info {
+  background-color: #2185D0;
+}
+#societyAdmin .toast-warning {
+  background-color: #F2711C;
+}
+#societyAdmin .toast-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  background-color: #1B1C1D;
+  opacity: 0.4;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  filter: alpha(opacity=40);
+}
+@media all and (max-width: 240px) {
+  #societyAdmin #toast-container > div {
+    padding: 8px 8px 8px 50px;
+    width: 11em;
+  }
+  #societyAdmin #toast-container .toast-close-button {
+    right: -0.2em;
+    top: -0.2em;
+  }
+}
+@media all and (min-width: 241px) and (max-width: 480px) {
+  #societyAdmin #toast-container > div {
+    padding: 8px 8px 8px 50px;
+    width: 18em;
+  }
+  #societyAdmin #toast-container .toast-close-button {
+    right: -0.2em;
+    top: -0.2em;
+  }
+}
+@media all and (min-width: 481px) and (max-width: 768px) {
+  #societyAdmin #toast-container > div {
+    padding: 15px 15px 15px 50px;
+    width: 25em;
+  }
+}
+#societyAdmin #toast-container {
+  /*--------------
+       Content
+  ---------------*/
+  /* Header */
+  /* Close Icon */
+  /*--------------
+     Types
+---------------*/
+  /* Info */
+  /* warning */
+  /* error */
+  /* success */
+}
+#societyAdmin #toast-container > .toast {
+  position: relative;
+  min-height: 1em;
+  margin: 1em 0em;
+  background: #F8F8F9;
+  padding: 1em 1.5em;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, 0.87);
+  transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
+  border-radius: 0.28571429rem;
+  box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.22) inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+#societyAdmin #toast-container > .toast:last-child {
+  margin-bottom: 0em;
+}
+#societyAdmin #toast-container .toast-title {
+  display: block;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin: -0.14285em 0em 0rem 0em;
+}
+#societyAdmin #toast-container .toast-close-button {
+  cursor: pointer;
+  position: absolute;
+  margin: 0em;
+  top: 0.78575em;
+  right: 0.5em;
+  opacity: 0.7;
+  transition: opacity 0.1s ease;
+}
+#societyAdmin #toast-container .toast-close-button:hover {
+  opacity: 1;
+}
+#societyAdmin #toast-container .toast-info {
+  background-color: #F8FFFF;
+  color: #276F86;
+}
+#societyAdmin #toast-container .toast-info .toast-title {
+  color: #0E566C;
+}
+#societyAdmin #toast-container .toast-info .toast-progress {
+  background-color: #0E566C;
+}
+#societyAdmin #toast-container .toast-warning {
+  background-color: #FFFAF3;
+  color: #573A08;
+}
+#societyAdmin #toast-container .toast-warning .toast-title {
+  color: #794B02;
+}
+#societyAdmin #toast-container .toast-warning .toast-progress {
+  background-color: #794B02;
+}
+#societyAdmin #toast-container .toast-error {
+  background-color: #FFF6F6;
+  color: #9F3A38;
+}
+#societyAdmin #toast-container .toast-error .toast-title {
+  color: #912D2B;
+}
+#societyAdmin #toast-container .toast-error .toast-progress {
+  background-color: #912D2B;
+}
+#societyAdmin #toast-container .toast-success {
+  background-color: #FCFFF5;
+  color: #2C662D;
+}
+#societyAdmin #toast-container .toast-success .toast-title {
+  color: #1A531B;
+}
+#societyAdmin #toast-container .toast-success .toast-progress {
+  background-color: #1A531B;
 }
 #societyAdmin .ui.text.red {
   color: #DB2828;
