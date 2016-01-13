@@ -8,7 +8,7 @@
         <div class="item">
             <div class="ui middle aligned grid">
                 <div class="six wide column">
-                    <img class="ui tiny circular right spaced image" src="{{ $currentUser->profile->present()->avatar }}" id="sidebarUserProfilePicture">
+                    <img class="ui tiny circular right spaced image" src="{{ $currentUser->present()->avatar }}" id="sidebarUserProfilePicture">
                 </div>
                 <div class="ten wide column">
                     <span><b>{{$currentUser->present()->fullname}}</b></span>
