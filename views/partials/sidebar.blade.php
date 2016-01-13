@@ -14,7 +14,7 @@
                     <span><b>{{$currentUser->present()->fullname}}</b></span>
 
                     <div class="menu">
-                        @if(Setting::get('user::enable-profile') && $currentUser->hasAccess('user.profile.edit'))
+                        @if(Setting::get('user::enable-profile') && $currentUser->can('user.profile.edit'))
                             <a href="{{route('backend::user.profile.show')}}" class="item">
                                 @lang('core::elements.action.edit resource', ['name' => trans('user::profile.title.profile')])
                             </a>
