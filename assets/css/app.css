@@ -2065,6 +2065,9 @@ be a descendant of the grid when it is being dragged.
   overflow: hidden;
   will-change: transform;
 }
+#societyAdmin .full.height > .toc .ui.dimmer {
+  background-color: rgba(27, 28, 29, 0.85);
+}
 #societyAdmin #content {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
