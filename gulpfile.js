@@ -37,5 +37,4 @@ elixir(function (mix) {
      * Copy images
      */
     mix.copy('resources/images', 'assets/images');
-
 });

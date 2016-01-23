@@ -11,7 +11,9 @@ require('jquery-tablesort');
 // //////////////////////////////////////////////////////////////////////////
 global.Vue = require('vue');
 global.Vue.use(require('vue-resource'));
-global.Vue.use(require('vue-router'));
+
+global.VueRouter = require('vue-router');
+global.Vue.use(VueRouter);
 
 // //////////////////////////////////////////////////////////////////////////
 // Fine Uploader
