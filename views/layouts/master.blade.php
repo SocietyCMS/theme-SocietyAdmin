@@ -51,6 +51,8 @@
 {!! Theme::script('js/app.js') !!}
 @include('javascript.api')
 
+@include('partials.utilities')
+
 @yield('javascript')
 
 </body>
