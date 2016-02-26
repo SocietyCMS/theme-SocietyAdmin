@@ -5,6 +5,9 @@
 global.$ = global.jQuery = require('jquery');
 require('jquery-ui');
 require('jquery-tablesort');
+require('jquery-sortable');
+
+require('imports?define=>false!blueimp-file-upload');
 
 // //////////////////////////////////////////////////////////////////////////
 // Vue.js
@@ -18,7 +21,7 @@ global.Vue.use(VueRouter);
 // //////////////////////////////////////////////////////////////////////////
 // Fine Uploader
 // //////////////////////////////////////////////////////////////////////////
-global.fineUploader = require('fineUploader');
+global.fineUploader = require('../../node_modules/fine-uploader/fine-uploader/fine-uploader.js');
 
 // //////////////////////////////////////////////////////////////////////////
 // Sortable Table
@@ -31,6 +34,8 @@ global.Sortable = require('sortablejs');
 global.MediumEditor = require('medium-editor');
 global.MediumEditorTable = require('medium-editor-tables');
 
+import activateInsertPlugin from 'medium-editor-insert-plugin-webpack';
+activateInsertPlugin(global.$);
 
 // //////////////////////////////////////////////////////////////////////////
 // FullCalendar
