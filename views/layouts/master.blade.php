@@ -18,6 +18,8 @@
 
     {!! Theme::script('js/vendor.js') !!}
     {!! Theme::script('semantic/dist/semantic.min.js') !!}
+
+    @include('partials.utilities')
 </head>
 <body id="societyAdmin">
 
@@ -47,12 +49,7 @@
 
 @yield('htmlComponents')
 
-
 {!! Theme::script('js/app.js') !!}
-@include('javascript.api')
-
-@include('partials.utilities')
-
 @yield('javascript')
 
 </body>
