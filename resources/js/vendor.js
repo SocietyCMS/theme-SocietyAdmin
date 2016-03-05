@@ -6,6 +6,7 @@ global.$ = global.jQuery = require('jquery');
 require('jquery-ui');
 require('jquery-tablesort');
 require('jquery-sortable');
+require('jqtree');
 
 require('imports?define=>false!blueimp-file-upload');
 
