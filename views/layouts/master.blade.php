@@ -16,6 +16,10 @@
 
     @yield('styles')
 
+    @foreach($cssFiles as $css)
+        <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset($css) }}">
+    @endforeach
+
     {!! Theme::script('js/vendor.js') !!}
     {!! Theme::script('semantic/dist/semantic.min.js') !!}
 
@@ -50,7 +54,13 @@
 @yield('htmlComponents')
 
 {!! Theme::script('js/app.js') !!}
+
+<!-- TODO: Remove and replace with assetPipeline -->
 @yield('javascript')
+
+@foreach($jsFiles as $js)
+    <script src="{{ URL::asset($js) }}"></script>
+@endforeach
 
 </body>
 </html>
