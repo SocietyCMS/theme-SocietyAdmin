@@ -79,7 +79,7 @@
 
 	    $('.ui.dropdown').dropdown();
 
-	    $('.ui.accordion').accordion();
+	    $('.ui.initialize.accordion').accordion();
 	}, 100);
 
 /***/ },

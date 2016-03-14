@@ -12,7 +12,7 @@ setTimeout(function() {
     $('.ui.dropdown')
         .dropdown();
 
-    $('.ui.accordion')
+    $('.ui.initialize.accordion')
         .accordion();
 
 }, 100);
