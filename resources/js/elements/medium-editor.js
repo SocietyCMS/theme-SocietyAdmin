@@ -1,23 +1,11 @@
-var editor = new MediumEditor('.editable', {
-    placeholder: {
-        text: ''
-    },
-    extensions: {
-        table: new MediumEditorTable()
-    },
-    toolbar: {
-        buttons: [
-            'h2',
-            'h3',
-            'bold',
-            'italic',
-            'unorderedlist',
-            'orderedlist',
-            'table'
-        ]
-    }
-});
 
-$('.editable').mediumInsert({
-    editor: editor
-});
+var editor = new Dante.Editor(
+    {
+        el: "#editor",
+        upload_url: "/images.json",
+        store_url: '/api/blog/article/blabla/autosave?token='+societycms.jwtoken,
+        disable_title: true,
+        body_placeholder: "Tell your story..."
+    }
+);
+editor.start();

@@ -213,23 +213,16 @@
 /* 6 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
-	var editor = new MediumEditor('.editable', {
-	    placeholder: {
-	        text: ''
-	    },
-	    extensions: {
-	        table: new MediumEditorTable()
-	    },
-	    toolbar: {
-	        buttons: ['h2', 'h3', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'table']
-	    }
+	var editor = new Dante.Editor({
+	    el: "#editor",
+	    upload_url: "/images.json",
+	    store_url: '/api/blog/article/blabla/autosave?token=' + societycms.jwtoken,
+	    disable_title: true,
+	    body_placeholder: "Tell your story..."
 	});
-
-	$('.editable').mediumInsert({
-	    editor: editor
-	});
+	editor.start();
 
 /***/ },
 /* 7 */
