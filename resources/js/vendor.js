@@ -41,13 +41,9 @@ global.Sortable = require('sortablejs');
 global.MediumEditor = require('medium-editor');
 global.MediumEditorTable = require('medium-editor-tables');
 
-// //////////////////////////////////////////////////////////////////////////
-// Dante
-// //////////////////////////////////////////////////////////////////////////
-global.Sanitize = require('../vendor/sanitize/sanitize.js');
+import activateInsertPlugin from 'medium-editor-insert-plugin-webpack';
+activateInsertPlugin(global.$);
 
-require('../vendor/dante/js/dante-editor.js');
-require('../vendor/dante/css/dante-editor.css');
 
 
 // //////////////////////////////////////////////////////////////////////////
