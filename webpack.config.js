@@ -37,7 +37,6 @@ module.exports = {
         return [
             require('autoprefixer'),
             require('precss'),
-            require('postcss-less-vars')
         ];
     },
     plugins: [
