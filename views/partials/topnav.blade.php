@@ -3,6 +3,9 @@
         <i class="sign out icon"></i>
         @lang('core::core.general.sign out')
     </a>
+    <a href="/" target="_blank" class="ui right floated basic icon button">
+        <i class="browser icon"></i>
+    </a>
 </div>
 <div class="ui container">
     <h1 class="ui header">
