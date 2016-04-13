@@ -26,7 +26,6 @@
 
 
 {!! Theme::script('js/app.js') !!}
-@include('javascript.api')
 
 @yield('javascript')
 
