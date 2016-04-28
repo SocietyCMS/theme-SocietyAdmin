@@ -16,7 +16,10 @@
 
     @yield('styles')
 
-    <script src="messages.js"></script>
+    <script src="/messages.js"></script>
+    <script>
+        Lang.setLocale('{{config('app.locale')}}');
+    </script>
     {!! Theme::script('js/vendor.js') !!}
     {!! Theme::script('semantic/dist/semantic.min.js') !!}
 
