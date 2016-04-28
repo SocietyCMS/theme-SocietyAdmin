@@ -16,6 +16,7 @@
 
     @yield('styles')
 
+    <script src="messages.js"></script>
     {!! Theme::script('js/vendor.js') !!}
     {!! Theme::script('semantic/dist/semantic.min.js') !!}
 
