@@ -1,7 +1,12 @@
 .feed .event {
 
+  .label>img {
+    padding-top: 0;
+  }
+
+
   &.protected, &.private {
-    .label i.icon:after {
+    .label i.icon:after{
       line-height: 0.7;
       top: 1.9rem;
       left: 2rem;
@@ -19,10 +24,10 @@
 
 
   &.protected .label i.icon:after {
-    content: "\f132";
+      content: "\f132";
   }
 
-  &.private .label i.icon:after {
-    content: "\f023";
+  &.private .label .label i.icon:after {
+      content: "\f023";
   }
 }
