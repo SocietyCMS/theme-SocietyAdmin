@@ -15,4 +15,8 @@ setTimeout(function() {
     $('.ui.initialize.accordion')
         .accordion();
 
+    $('.hasPopup')
+        .popup()
+    ;
+    
 }, 100);

@@ -80,6 +80,8 @@
 	    $('.ui.dropdown').dropdown();
 
 	    $('.ui.initialize.accordion').accordion();
+
+	    $('.hasPopup').popup();
 	}, 100);
 
 /***/ },

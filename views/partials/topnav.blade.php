@@ -3,7 +3,7 @@
         <i class="sign out icon"></i>
         @lang('core::core.general.sign out')
     </a>
-    <a href="/" target="_blank" class="ui right floated basic icon button">
+    <a href="/" target="_blank" class="ui right floated basic icon button hasPopup" data-content="{{trans('core::core.general.view website')}}" data-variation="inverted">
         <i class="browser icon"></i>
     </a>
 </div>
