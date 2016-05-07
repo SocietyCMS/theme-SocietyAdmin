@@ -28,12 +28,6 @@ elixir(function (mix) {
     mix.less(["app.less"]);
 
     /**
-     * Concat scripts
-     **/
-    mix.browserify("app.js");
-    mix.browserify("vendor.js");
-
-    /**
      * Copy images
      */
     mix.copy('resources/images', 'assets/images');

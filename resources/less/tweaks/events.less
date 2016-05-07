@@ -1,0 +1,28 @@
+.feed .event {
+
+  &.protected, &.private {
+    .label i.icon:after {
+      line-height: 0.7;
+      top: 1.9rem;
+      left: 2rem;
+      opacity: 1;
+      font-size: 1.3rem;
+      position: absolute;
+      padding-top: .1em;
+      background-color: #fff;
+      border-radius: 500rem;
+      width: 1.3rem;
+      height: 1.3rem;
+      content: "";
+    }
+  }
+
+
+  &.protected .label i.icon:after {
+    content: "\f132";
+  }
+
+  &.private .label i.icon:after {
+    content: "\f023";
+  }
+}
