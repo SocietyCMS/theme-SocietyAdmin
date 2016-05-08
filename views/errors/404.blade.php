@@ -1,14 +1,29 @@
-@extends('layouts.plain')
+@extends('layouts.master')
 
 @section('title')
-   404
+    {{ trans('core::core.error404.error 404') }}
+@endsection
+
+@section('subTitle')
+    {{ trans('core::core.error404.page not found') }}
 @endsection
 
 @section('content')
-    <div class="ui inverted segment" style="height: 100vh;margin: 0">
-        <div class="ui raised very padded center aligned container segment" style="margin-top: 3em">
-            <img src="{!! Theme::url('/images/slant.png') !!}" class="ui centered large image">
-            <h1 class="ui header">404</h1>
+
+    <div class="ui two column centered grid">
+        <div class="center aligned column">
+            <img src="{!! Theme::url('/images/slant.png') !!}" class="ui centered small image">
+            <h2 class="ui huge header">
+                <div class="content">
+                    {{ trans('core::core.error404.message') }}
+                    <div class="sub header"><a href="{{ URL::route('dashboard.index') }}"> {{ trans('core::core.error404.back to dashboard') }}</a></div>
+                </div>
+            </h2>
+            <div class="column">
+
+            </div>
         </div>
+
     </div>
+
 @endsection
