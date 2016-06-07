@@ -2641,9 +2641,7 @@ be a descendant of the grid when it is being dragged.
   padding-top: 0;
 }
 #societyAdmin .feed .event.protected .label i.icon:after,
-#societyAdmin .feed .event.private .label i.icon:after,
-#societyAdmin .feed .event.protected .label img:after,
-#societyAdmin .feed .event.private .label img:after {
+#societyAdmin .feed .event.private .label i.icon:after {
   line-height: 0.7;
   top: 1.9rem;
   left: 2rem;
@@ -2657,12 +2655,10 @@ be a descendant of the grid when it is being dragged.
   height: 1.3rem;
   content: "";
 }
-#societyAdmin .feed .event.protected .label i.icon:after,
-#societyAdmin .feed .event.protected .label img:after {
+#societyAdmin .feed .event.protected .label i.icon:after {
   content: "\f132";
 }
-#societyAdmin .feed .event.private .label .label i.icon:after,
-#societyAdmin .feed .event.private .label .label img:after {
+#societyAdmin .feed .event.private .label .label i.icon:after {
   content: "\f023";
 }
 #societyAdmin .flex {
